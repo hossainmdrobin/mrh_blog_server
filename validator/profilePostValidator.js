@@ -9,16 +9,15 @@ module.exports = [
             console.log(signedUpUser)
             return Promise.reject('Please Fill up the signup form')
         }
+        const profile = await Profile.findOne({user: req.user})
+        if(profile){
+            console.log(profile)
+            return Promise.reject('Profile Already Exists')
+        }
         
     }),
     body('name')
     .isLength({min:2,max:30})
     .withMessage('Please Enter your full name')
-    // .custom((name,{req})=> {
-    //     console.log(req.body.name)
-    //     if(!req.body.name){
-    //         return Promise.reject('Please Enter your full name')
-    //     }
-    // })
     
 ]

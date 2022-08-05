@@ -32,6 +32,12 @@ const profile = new Schema({
             ref: 'Post'
         }
     ],
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Profile'
+        }
+    ],
     bookmarks: [
         {
             type: Schema.Types.ObjectId,

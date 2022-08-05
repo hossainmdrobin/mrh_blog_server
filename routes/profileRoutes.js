@@ -5,8 +5,11 @@ const multer = require('multer')
 const isAuth =require('../controller/isAuth')
 const {
     profilePostController,
-    profileGetController
+    addFriendController,
+    profileGetController,
+    getUnAddedProfile
 } = require('./../controller/profileController')
+const { getProfile } = require('../controller/controllerMiddleware')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=> {
@@ -43,8 +46,10 @@ const upload = multer({
 router.post('/', upload.single("profilePic"),profilePostValidator,profilePostController)
    
 router.get('/',isAuth, profileGetController)
-// router.get('/',(req,res)=> {
-//     console.log(req.headers.authorization)
-// })
+router.get('/getUnaddedProfile', isAuth ,getProfile , getUnAddedProfile)
+router.get('/addFriend/:profileId', isAuth, addFriendController)
+
+
+
 
 module.exports = router;
