@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 //  IMPORTING ROUTES
 const authRoute = require('./routes/authRoute')
@@ -13,7 +14,7 @@ const commentRoute = require('./routes/commentRoute')
 //GENERETED VARIABLES 
 const app = express()
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = 'mongodb://localhost:27017/MRH_BLOG'
+const MONGODB_URI = process.env.DB_URL
 
 //USING MIDDLEWARES
 app.use(morgan('dev'))

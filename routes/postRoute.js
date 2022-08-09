@@ -11,7 +11,7 @@ const {
     getBookmarkedPost,
     findPostByItsId
 } = require('../controller/postController')
-const { deletePost } = require('../controller/postControllerUD')
+const { deletePost, updatePost } = require('../controller/postControllerUD')
 
 router.post('/', isAuth, postPostController)
 router.get('/', isAuth, postGetController)
@@ -22,4 +22,7 @@ router.get('/findPostByItsId/:postId' ,findPostByItsId)
 
 //  SEPERATE CONTROLLER FOR UPDATE AND DELETE
 router.get('/delete/:postId', isAuth, deletePost)
+router.post('/update/:postId',isAuth, updatePost)
+
+
 module.exports = router

@@ -10,5 +10,4 @@ exports.getProfile =async (req,res,next) => {
     }catch{
         res.status(500).json({message:'Server Error'})
     }
-
 }

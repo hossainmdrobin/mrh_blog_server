@@ -7,7 +7,13 @@ const {
     profilePostController,
     addFriendController,
     profileGetController,
-    getUnAddedProfile
+    getUnAddedProfile,
+    updateProfilePic,
+    updateDetailController,
+    getProfileById,
+    getFriendsProfileById,
+    deleteFriendController,
+    getProfileByUserId
 } = require('./../controller/profileController')
 const { getProfile } = require('../controller/controllerMiddleware')
 
@@ -44,10 +50,16 @@ const upload = multer({
 })
 
 router.post('/', upload.single("profilePic"),profilePostValidator,profilePostController)
+router.post('/updateProfilePic',isAuth,upload.single('profilePic'), updateProfilePic  )
+router.post('/updateDetail',isAuth, updateDetailController)
    
+router.get('/getProfileById', isAuth, getProfileById)
+router.get('/deleteFriend/:profileId',isAuth,deleteFriendController)
+router.get('/getFriendsProfileById/:profileId', getFriendsProfileById)
 router.get('/',isAuth, profileGetController)
 router.get('/getUnaddedProfile', isAuth ,getProfile , getUnAddedProfile)
 router.get('/addFriend/:profileId', isAuth, addFriendController)
+router.get('/getProfileByUserId/:userId',getProfileByUserId )
 
 
 
