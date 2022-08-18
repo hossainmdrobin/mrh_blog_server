@@ -62,6 +62,4 @@ router.get('/addFriend/:profileId', isAuth, addFriendController)
 router.get('/getProfileByUserId/:userId',getProfileByUserId )
 
 
-
-
 module.exports = router;
