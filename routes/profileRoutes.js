@@ -3,6 +3,7 @@ const profilePostValidator = require('./../validator/profilePostValidator')
 const path = require('path')
 const multer = require('multer')
 const isAuth =require('../controller/isAuth')
+const path = require('path')
 const {
     profilePostController,
     addFriendController,
@@ -19,7 +20,7 @@ const { getProfile } = require('../controller/controllerMiddleware')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=> {
-        cb(null, './uploads')
+        cb(null, `${path.__dirname}/../uploads`)
     },
     filename: (req, file, cb)=> {
         const fileExt = path.extname(file.originalname)

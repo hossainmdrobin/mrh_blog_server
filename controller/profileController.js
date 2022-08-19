@@ -7,8 +7,8 @@ exports.profilePostController = (req, res, next) => {
     const reqObjKeyArr = Object.keys(req.body);
 
     const error = validationResult(req).formatWith(errorFormatter)
-    if (error.isEmpty) {
-        return res.status(500).json(error.mapped())
+    if (!error.isEmpty) {
+        return res.status(500).send(error.mapped())
     }
 
     let profileDetail = {}
