@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const profilePostValidator = require('./../validator/profilePostValidator')
-const path = require('path')
 const multer = require('multer')
 const isAuth =require('../controller/isAuth')
 const path = require('path')
