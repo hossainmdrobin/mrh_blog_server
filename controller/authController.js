@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 
 exports.signupAuthController = async (req, res, next) => {
     const { username, email, password } = req.body
+    console.log(req.body)
 
     try {
         const errors = validationResult(req).formatWith(errorFormatter)
@@ -25,6 +26,7 @@ exports.signupAuthController = async (req, res, next) => {
         }
 
     } catch (err) {
+        console.log(err)
         res.status(500).json({ message: 'Server Error' })
     }
 }
