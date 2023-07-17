@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const User = require('../models/user');
 
 const isAuth = async (req, res, next) => {
 
@@ -8,6 +9,7 @@ const isAuth = async (req, res, next) => {
         if (!decoded._id) {
             return res.status(500).json({ error: 'No login' })
         }
+        req.user = await User.findById(decoded?._id).populate("profile")
         req.info = decoded
         next()
     }catch(e){

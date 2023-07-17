@@ -6,12 +6,10 @@ module.exports = [
     .custom(async (user,{req})=> {
         const signedUpUser = await User.findById(user)
         if(!signedUpUser){
-            console.log(signedUpUser)
             return Promise.reject('Please Fill up the signup form')
         }
         const profile = await Profile.findOne({user: req.user})
         if(profile){
-            console.log(profile)
             return Promise.reject('Profile Already Exists')
         }
         

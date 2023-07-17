@@ -16,7 +16,19 @@ const user = new Schema({
     profile: {
         type: Schema.Types.ObjectId,
         ref: 'Profile'
-    }
+    },    
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Profile'
+        }
+    ],
+    bookmarks: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Post'
+        }
+    ]
 
 },{timestamps: true})
 
